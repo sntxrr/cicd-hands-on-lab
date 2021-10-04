@@ -17,6 +17,20 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+          
+  test-insights:
+    docker:
+      - image: quay.io/reactiveops/ci-images:v11-alpine
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.09.3
+      - run:
+          name: "Test Insights"
+          command: |
+            curl -L https://staging.insights.fairwinds.com/v0/insights-ci-0.4.4.sh > insights-ci.sh
+            chmod +x insights-ci.sh
+            ./insights-ci.sh
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -24,3 +38,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - test-insights
