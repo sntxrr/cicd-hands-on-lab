@@ -1,0 +1,8 @@
+options:
+  organization: cicd-hands-on-lab
+  hostname: https://staging.insights.fairwinds.com
+  baseBranch: main
+
+images:
+  docker:
+    - alpine:3.14.0
