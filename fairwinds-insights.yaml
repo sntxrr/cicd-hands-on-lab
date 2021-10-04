@@ -1,4 +1,5 @@
 options:
+  setExitCode: true
   organization: cicd-hands-on-lab
   hostname: https://staging.insights.fairwinds.com
   baseBranch: main
